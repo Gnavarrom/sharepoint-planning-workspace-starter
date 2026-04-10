@@ -1,0 +1,116 @@
+<svg width="1600" height="1000" viewBox="0 0 1600 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgBefore" x1="0" y1="0" x2="1600" y2="1000" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F4F7FB"/>
+      <stop offset="1" stop-color="#EAF0F7"/>
+    </linearGradient>
+    <filter id="shadow" x="0" y="0" width="1600" height="1000" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feOffset dy="16"/>
+      <feGaussianBlur stdDeviation="18"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0.203922 0 0 0 0 0.286275 0 0 0 0 0.372549 0 0 0 0.18 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1_1"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1_1" result="shape"/>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="1000" fill="url(#bgBefore)"/>
+  <text x="800" y="78" text-anchor="middle" fill="#24506C" font-family="Segoe UI, Arial, sans-serif" font-size="36" font-weight="700">Before: Standard SharePoint List View</text>
+  <text x="800" y="118" text-anchor="middle" fill="#5E7285" font-family="Segoe UI, Arial, sans-serif" font-size="20">Functional, but still a dense table for day-to-day planning</text>
+
+  <g filter="url(#shadow)">
+    <rect x="70" y="150" width="1460" height="780" rx="28" fill="#FFFFFF"/>
+  </g>
+
+  <rect x="70" y="150" width="1460" height="64" rx="28" fill="#EFF4FA"/>
+  <rect x="70" y="186" width="1460" height="744" rx="0" fill="#FFFFFF"/>
+  <circle cx="112" cy="182" r="7" fill="#FF6B6B"/>
+  <circle cx="136" cy="182" r="7" fill="#FFC857"/>
+  <circle cx="160" cy="182" r="7" fill="#6BD68C"/>
+  <text x="210" y="189" fill="#24506C" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="600">Microsoft Lists</text>
+  <text x="1410" y="189" fill="#7B8A98" font-family="Segoe UI, Arial, sans-serif" font-size="16">Team Planning Data</text>
+
+  <rect x="94" y="238" width="220" height="660" rx="18" fill="#F7FAFD"/>
+  <text x="124" y="278" fill="#6E8191" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700" letter-spacing="1.2">NAVIGATION</text>
+  <rect x="114" y="300" width="180" height="42" rx="12" fill="#FFFFFF"/>
+  <text x="140" y="327" fill="#233746" font-family="Segoe UI, Arial, sans-serif" font-size="16">Home</text>
+  <rect x="114" y="354" width="180" height="42" rx="12" fill="#DDEAF8"/>
+  <text x="140" y="381" fill="#20507A" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="600">Team Planning Data</text>
+  <rect x="114" y="408" width="180" height="42" rx="12" fill="#FFFFFF"/>
+  <text x="140" y="435" fill="#233746" font-family="Segoe UI, Arial, sans-serif" font-size="16">Documents</text>
+  <rect x="114" y="462" width="180" height="42" rx="12" fill="#FFFFFF"/>
+  <text x="140" y="489" fill="#233746" font-family="Segoe UI, Arial, sans-serif" font-size="16">Settings</text>
+
+  <text x="350" y="278" fill="#6F8292" font-family="Segoe UI, Arial, sans-serif" font-size="14">Home / Lists / Team Planning Data</text>
+  <text x="350" y="328" fill="#203544" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="700">Team Planning Data</text>
+  <text x="350" y="360" fill="#697C8C" font-family="Segoe UI, Arial, sans-serif" font-size="18">A simple list layout for activities, assignments, and weekly status</text>
+
+  <rect x="350" y="390" width="104" height="40" rx="12" fill="#0F6CBD"/>
+  <text x="382" y="415" fill="#FFFFFF" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="600">New</text>
+  <rect x="466" y="390" width="120" height="40" rx="12" fill="#F5F8FB" stroke="#D9E3ED"/>
+  <text x="498" y="415" fill="#335267" font-family="Segoe UI, Arial, sans-serif" font-size="16">Edit in grid</text>
+  <rect x="598" y="390" width="90" height="40" rx="12" fill="#F5F8FB" stroke="#D9E3ED"/>
+  <text x="628" y="415" fill="#335267" font-family="Segoe UI, Arial, sans-serif" font-size="16">Share</text>
+  <rect x="1130" y="390" width="260" height="40" rx="12" fill="#FFFFFF" stroke="#D9E3ED"/>
+  <text x="1160" y="415" fill="#8A99A6" font-family="Segoe UI, Arial, sans-serif" font-size="15">Search this list</text>
+
+  <rect x="350" y="458" width="1120" height="64" rx="16" fill="#F6F9FC"/>
+  <text x="382" y="498" fill="#4D6578" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">Task</text>
+  <text x="620" y="498" fill="#4D6578" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">Assigned to</text>
+  <text x="798" y="498" fill="#4D6578" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">Day</text>
+  <text x="900" y="498" fill="#4D6578" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">Week</text>
+  <text x="1072" y="498" fill="#4D6578" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">Status</text>
+  <text x="1210" y="498" fill="#4D6578" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">Type</text>
+  <text x="1345" y="498" fill="#4D6578" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">Batch</text>
+
+  <g font-family="Segoe UI, Arial, sans-serif" font-size="15" fill="#263947">
+    <rect x="350" y="534" width="1120" height="58" rx="14" fill="#FFFFFF" stroke="#E8EEF5"/>
+    <text x="382" y="570">Activity 1</text>
+    <text x="620" y="570">Worker 1</text>
+    <text x="798" y="570">Monday</text>
+    <text x="900" y="570">06 Apr 2026</text>
+    <rect x="1056" y="548" width="96" height="28" rx="14" fill="#FFF3D9"/>
+    <text x="1083" y="567" fill="#8A6200">Pending</text>
+    <text x="1210" y="570" fill="#4A6880">Activity Type 1</text>
+    <text x="1345" y="570">1001</text>
+
+    <rect x="350" y="602" width="1120" height="58" rx="14" fill="#FFFFFF" stroke="#E8EEF5"/>
+    <text x="382" y="638">Activity 2</text>
+    <text x="620" y="638">Worker 2</text>
+    <text x="798" y="638">Monday</text>
+    <text x="900" y="638">06 Apr 2026</text>
+    <rect x="1038" y="616" width="128" height="28" rx="14" fill="#DFF4E8"/>
+    <text x="1064" y="635" fill="#0E6B4A">In Progress</text>
+    <text x="1210" y="638" fill="#4A6880">Activity Type 2</text>
+    <text x="1345" y="638">1002</text>
+
+    <rect x="350" y="670" width="1120" height="58" rx="14" fill="#FFFFFF" stroke="#E8EEF5"/>
+    <text x="382" y="706">Activity 3</text>
+    <text x="620" y="706">Worker 3</text>
+    <text x="798" y="706">Tuesday</text>
+    <text x="900" y="706">06 Apr 2026</text>
+    <rect x="1048" y="684" width="112" height="28" rx="14" fill="#E7EEFB"/>
+    <text x="1074" y="703" fill="#2E5FA5">Completed</text>
+    <text x="1210" y="706" fill="#4A6880">Activity Type 3</text>
+    <text x="1345" y="706">1003</text>
+
+    <rect x="350" y="738" width="1120" height="58" rx="14" fill="#FFFFFF" stroke="#E8EEF5"/>
+    <text x="382" y="774">Activity 4</text>
+    <text x="620" y="774">Worker 4</text>
+    <text x="798" y="774">Tuesday</text>
+    <text x="900" y="774">06 Apr 2026</text>
+    <rect x="1060" y="752" width="84" height="28" rx="14" fill="#F0EBF8"/>
+    <text x="1084" y="771" fill="#6B5A91">Paused</text>
+    <text x="1210" y="774" fill="#4A6880">Activity Type 4</text>
+    <text x="1345" y="774">1004</text>
+
+    <rect x="350" y="806" width="1120" height="58" rx="14" fill="#FFFFFF" stroke="#E8EEF5"/>
+    <text x="382" y="842">Activity 5</text>
+    <text x="620" y="842">Worker 5</text>
+    <text x="798" y="842">Wednesday</text>
+    <text x="900" y="842">06 Apr 2026</text>
+    <rect x="1056" y="820" width="96" height="28" rx="14" fill="#FFF3D9"/>
+    <text x="1083" y="839" fill="#8A6200">Pending</text>
+    <text x="1210" y="842" fill="#4A6880">Activity Type 5</text>
+    <text x="1345" y="842">1005</text>
+  </g>
+</svg>

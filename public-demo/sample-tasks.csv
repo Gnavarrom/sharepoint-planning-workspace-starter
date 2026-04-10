@@ -1,0 +1,13 @@
+Task,Assigned to,Day,Week,Status,Type,Batch reference,Notes,Start time,End time,CompletedBy,CompletedDate
+Activity 1,Worker 1,Monday,2026-04-06,Pending,Activity Type 1,1001,Generic planning activity,,,,
+Activity 2,Worker 2,Monday,2026-04-06,In Progress,Activity Type 2,1002,Generic support activity,2026-04-06T08:00:00,,
+Activity 3,Worker 3,Tuesday,2026-04-06,Completed,Activity Type 3,1003,Generic execution activity,2026-04-07T08:15:00,2026-04-07T10:00:00,Worker 3,2026-04-07T10:00:00
+Activity 4,Worker 4,Tuesday,2026-04-06,Paused,Activity Type 4,1004,Generic review activity,2026-04-07T09:00:00,,
+Activity 5,Worker 5,Wednesday,2026-04-06,Pending,Activity Type 5,1005,Generic coordination activity,,,,
+Activity 6,Worker 6,Wednesday,2026-04-06,Completed,Activity Type 6,1006,Generic training activity,2026-04-08T07:45:00,2026-04-08T09:00:00,Worker 6,2026-04-08T09:00:00
+Activity 7,Worker 7,Thursday,2026-04-06,Pending,Activity Type 1,1007,Generic handoff activity,,,,
+Activity 8,Worker 8,Thursday,2026-04-06,In Progress,Activity Type 2,1008,Generic workflow activity,2026-04-09T11:00:00,,
+Activity 9,Worker 1,Friday,2026-04-06,Completed,Activity Type 3,1009,Generic closeout activity,2026-04-10T08:30:00,2026-04-10T09:30:00,Worker 1,2026-04-10T09:30:00
+Activity 10,Worker 2,Friday,2026-04-06,Pending,Activity Type 4,1010,Generic planning activity,,,,
+Activity 11,Worker 3,Monday,2026-04-13,Pending,Activity Type 5,1011,Generic queue activity,,,,
+Activity 12,Worker 4,Tuesday,2026-04-13,Pending,Activity Type 6,1012,Generic training follow-up,,,,

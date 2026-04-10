@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Team Planning Workspace Demo</title>
+  <style>
+    :root {
+      --bg: #f5f2e9;
+      --panel: rgba(255, 255, 255, 0.9);
+      --panel-strong: #ffffff;
+      --text: #21312b;
+      --muted: #61736a;
+      --accent: #15755f;
+      --accent-dark: #0f614f;
+      --line: rgba(44, 71, 61, 0.12);
+      --shadow: 0 24px 60px rgba(26, 38, 34, 0.16);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(44, 164, 131, 0.14), transparent 24%),
+        radial-gradient(circle at bottom right, rgba(214, 179, 96, 0.12), transparent 28%),
+        linear-gradient(180deg, #fbfaf6 0%, var(--bg) 100%);
+      color: var(--text);
+    }
+
+    .app {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) 360px;
+      gap: 24px;
+      padding: 28px;
+    }
+
+    .stage,
+    .sidebar {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(12px);
+    }
+
+    .stage {
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .stageHeader {
+      padding: 22px 28px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .eyebrow {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #2a7d64;
+      margin-bottom: 6px;
+    }
+
+    .title {
+      font-size: 30px;
+      font-weight: 700;
+      line-height: 1.05;
+      margin: 0;
+    }
+
+    .subtitle {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .badge {
+      padding: 12px 16px;
+      border-radius: 16px;
+      background: rgba(21, 117, 95, 0.08);
+      color: var(--accent-dark);
+      font-size: 13px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .progress {
+      margin: 22px 28px 0;
+      height: 8px;
+      border-radius: 999px;
+      background: rgba(20, 44, 36, 0.08);
+      overflow: hidden;
+    }
+
+    .progressBar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #178468 0%, #0f614f 100%);
+      transition: width 0.25s linear;
+    }
+
+    .slideViewport {
+      flex: 1;
+      position: relative;
+      padding: 24px 28px 28px;
+    }
+
+    .slide {
+      position: absolute;
+      inset: 24px 28px 28px;
+      opacity: 0;
+      transform: translateY(18px) scale(0.99);
+      transition: opacity 0.45s ease, transform 0.45s ease;
+      display: grid;
+      grid-template-rows: auto 1fr;
+      gap: 18px;
+      pointer-events: none;
+    }
+
+    .slide.active {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      pointer-events: auto;
+    }
+
+    .slideMeta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .slideName {
+      font-size: 26px;
+      font-weight: 700;
+      margin: 0;
+    }
+
+    .slideTime {
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .slideBody {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(300px, 0.8fr);
+      gap: 22px;
+      min-height: 0;
+    }
+
+    .visual {
+      background: var(--panel-strong);
+      border: 1px solid rgba(44, 71, 61, 0.08);
+      border-radius: 24px;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 18px;
+    }
+
+    .copy {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(245, 249, 247, 0.96) 100%);
+      border: 1px solid rgba(44, 71, 61, 0.08);
+      border-radius: 24px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .copyLead {
+      margin: 0;
+      font-size: 20px;
+      line-height: 1.45;
+      color: #294238;
+    }
+
+    .copyList {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.55;
+    }
+
+    .copyList li + li {
+      margin-top: 10px;
+    }
+
+    .sidebar {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .controlRow {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    button {
+      border: none;
+      border-radius: 18px;
+      padding: 14px 16px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .primary {
+      background: linear-gradient(135deg, #178468 0%, #0f614f 100%);
+      color: #fff;
+    }
+
+    .secondary {
+      background: #fff;
+      color: #355246;
+      border: 1px solid rgba(44, 71, 61, 0.14);
+    }
+
+    .panelTitle {
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #6b7d74;
+      margin: 0 0 10px;
+    }
+
+    .voiceover,
+    .slideList,
+    .tips {
+      background: rgba(255, 255, 255, 0.82);
+      border: 1px solid rgba(44, 71, 61, 0.08);
+      border-radius: 20px;
+      padding: 18px;
+    }
+
+    .voiceoverText {
+      margin: 0;
+      font-size: 15px;
+      line-height: 1.65;
+      color: #395046;
+    }
+
+    .slideListItem {
+      padding: 12px 14px;
+      border-radius: 16px;
+      color: #466056;
+      font-size: 14px;
+      border: 1px solid transparent;
+      transition: all 0.2s ease;
+    }
+
+    .slideListItem.active {
+      background: rgba(23, 132, 104, 0.08);
+      border-color: rgba(23, 132, 104, 0.18);
+      color: #144f40;
+      font-weight: 700;
+    }
+
+    .slideListItem + .slideListItem {
+      margin-top: 8px;
+    }
+
+    .tips p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 14px;
+    }
+
+    .footerNote {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.55;
+      margin-top: auto;
+    }
+
+    @media (max-width: 1180px) {
+      .app {
+        grid-template-columns: 1fr;
+      }
+
+      .slideBody {
+        grid-template-columns: 1fr;
+      }
+
+      .visual {
+        min-height: 340px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <main class="stage">
+      <div class="stageHeader">
+        <div>
+          <div class="eyebrow">Free Starter Resource Demo</div>
+          <h1 class="title">From Process Knowledge to Working App</h1>
+          <p class="subtitle">A public-safe walkthrough about using Codex in VS Code to move from a SharePoint list to a planning workspace.</p>
+        </div>
+        <div class="badge" id="counter">Slide 1 / 5</div>
+      </div>
+
+      <div class="progress">
+        <div class="progressBar" id="progressBar"></div>
+      </div>
+
+      <section class="slideViewport" id="slideViewport"></section>
+    </main>
+
+    <aside class="sidebar">
+      <div class="controlRow">
+        <button class="primary" id="playPause">Pause</button>
+        <button class="secondary" id="restart">Restart</button>
+      </div>
+
+      <div class="voiceover">
+        <p class="panelTitle">Voiceover</p>
+        <p class="voiceoverText" id="voiceoverText"></p>
+      </div>
+
+      <div class="slideList">
+        <p class="panelTitle">Scenes</p>
+        <div id="slideList"></div>
+      </div>
+
+      <div class="tips">
+        <p class="panelTitle">How To Use</p>
+        <p>Open this file in a browser, press full screen, and record the presentation with QuickTime, Loom, Teams, or any screen recorder. You can also pause autoplay and use it as a live walkthrough when sharing the free starter pack.</p>
+      </div>
+
+      <div class="footerNote">
+        Built from anonymized mockups and generic labels so the story and starter resource can be shared publicly without exposing real team names, departments, or site details.
+      </div>
+    </aside>
+  </div>
+
+  <script>
+    const slides = [
+      {
+        title: "What I Knew First",
+        duration: 8,
+        visual: "../images/before-sharepoint-list.png",
+        lead: "I did not start with complete technical knowledge of every tool involved. What I did know clearly was the SharePoint process, the friction in it, and the result I wanted.",
+        bullets: [
+          "The original workflow lived inside a standard SharePoint list.",
+          "The list stored the work, but it did not really support planning.",
+          "The business problem was clear before the technical path was."
+        ],
+        voiceover: "This project started with a simple SharePoint list. I did not begin with complete knowledge of every tool used to build the final app. What I did have was a clear understanding of the existing workflow, where the friction was, and what better looked like."
+      },
+      {
+        title: "The Real Opportunity",
+        duration: 8,
+        visual: "../images/before-after-comparison.png",
+        lead: "The opportunity was not to replace SharePoint, but to use it as the foundation for a much better planning experience.",
+        bullets: [
+          "Keep SharePoint as the datastore.",
+          "Reduce friction for planning and updates.",
+          "Move from raw list management to a more usable workflow."
+        ],
+        voiceover: "The goal was not to throw away the existing SharePoint structure. The goal was to keep the data foundation and create a front-end experience that matched how the work actually needed to be planned."
+      },
+      {
+        title: "How Codex Helped",
+        duration: 9,
+        visual: "../images/after-planning-workspace.png",
+        lead: "Codex in VS Code helped me explore the applicable scope for this use case and move faster from process knowledge into implementation.",
+        bullets: [
+          "It reduced friction in implementation and iteration.",
+          "It helped connect the desired outcome with a practical technical path.",
+          "It made the build more accessible even without full up-front tool mastery."
+        ],
+        voiceover: "Using Codex in VS Code, I explored what was realistically applicable to this use case and moved much faster from idea to implementation. That made it possible to bridge the gap between operational understanding and a working solution."
+      },
+      {
+        title: "The Result",
+        duration: 9,
+        visual: "../images/after-planning-workspace.png",
+        lead: "The result was a lightweight planning workspace built on top of the same SharePoint foundation, but with a much better day-to-day experience.",
+        bullets: [
+          "Weekly board view for planning.",
+          "Clearer assignment flow and easier updates.",
+          "Support for Kanban, daily, team, and management perspectives."
+        ],
+        voiceover: "The result was not just a nicer interface. It became a better operational workflow, with clearer visibility, easier updates, and views that better matched how the work was actually organized."
+      },
+      {
+        title: "Why I Am Sharing It",
+        duration: 8,
+        visual: "../images/before-after-comparison.png",
+        lead: "I wanted this to be more than a showcase, so I turned it into a free public-safe starter resource that others can use in VS Code with Codex.",
+        bullets: [
+          "It helps others learn from the same transformation pattern.",
+          "It shows that process knowledge is already a strong starting point.",
+          "It gives people something practical to adapt, not just something to admire."
+        ],
+        voiceover: "That is why I prepared a free public-safe starter resource. The point is not only to show the result, but to help other people who understand their workflow and want to build something similar using VS Code and Codex."
+      }
+    ];
+
+    const viewport = document.getElementById("slideViewport");
+    const progressBar = document.getElementById("progressBar");
+    const playPause = document.getElementById("playPause");
+    const restart = document.getElementById("restart");
+    const counter = document.getElementById("counter");
+    const voiceoverText = document.getElementById("voiceoverText");
+    const slideList = document.getElementById("slideList");
+
+    let currentIndex = 0;
+    let playing = true;
+    let elapsed = 0;
+    let timer = null;
+
+    function renderSlides() {
+      viewport.innerHTML = slides.map((slide, index) => `
+        <article class="slide ${index === currentIndex ? "active" : ""}">
+          <div class="slideMeta">
+            <h2 class="slideName">${slide.title}</h2>
+            <div class="slideTime">${slide.duration}s scene</div>
+          </div>
+          <div class="slideBody">
+            <div class="visual">
+              <img src="${slide.visual}" alt="${slide.title}">
+            </div>
+            <div class="copy">
+              <p class="copyLead">${slide.lead}</p>
+              <ul class="copyList">
+                ${slide.bullets.map(item => `<li>${item}</li>`).join("")}
+              </ul>
+            </div>
+          </div>
+        </article>
+      `).join("");
+
+      slideList.innerHTML = slides.map((slide, index) => `
+        <div class="slideListItem ${index === currentIndex ? "active" : ""}">
+          ${index + 1}. ${slide.title}
+        </div>
+      `).join("");
+
+      counter.textContent = `Slide ${currentIndex + 1} / ${slides.length}`;
+      voiceoverText.textContent = slides[currentIndex].voiceover;
+      updateProgress();
+    }
+
+    function updateProgress() {
+      const totalDuration = slides.reduce((sum, slide) => sum + slide.duration, 0);
+      const completed = slides.slice(0, currentIndex).reduce((sum, slide) => sum + slide.duration, 0);
+      const withinSlide = Math.min(elapsed, slides[currentIndex].duration);
+      const percentage = ((completed + withinSlide) / totalDuration) * 100;
+      progressBar.style.width = `${percentage}%`;
+    }
+
+    function tick() {
+      if (!playing) {
+        return;
+      }
+
+      elapsed += 0.1;
+      if (elapsed >= slides[currentIndex].duration) {
+        if (currentIndex < slides.length - 1) {
+          currentIndex += 1;
+          elapsed = 0;
+          renderSlides();
+        } else {
+          playing = false;
+          playPause.textContent = "Play";
+        }
+      }
+
+      updateProgress();
+    }
+
+    function startTimer() {
+      if (timer) {
+        clearInterval(timer);
+      }
+      timer = setInterval(tick, 100);
+    }
+
+    playPause.addEventListener("click", () => {
+      playing = !playing;
+      playPause.textContent = playing ? "Pause" : "Play";
+    });
+
+    restart.addEventListener("click", () => {
+      currentIndex = 0;
+      elapsed = 0;
+      playing = true;
+      playPause.textContent = "Pause";
+      renderSlides();
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === " ") {
+        event.preventDefault();
+        playPause.click();
+      }
+
+      if (event.key === "ArrowRight") {
+        currentIndex = Math.min(currentIndex + 1, slides.length - 1);
+        elapsed = 0;
+        renderSlides();
+      }
+
+      if (event.key === "ArrowLeft") {
+        currentIndex = Math.max(currentIndex - 1, 0);
+        elapsed = 0;
+        renderSlides();
+      }
+    });
+
+    renderSlides();
+    startTimer();
+  </script>
+</body>
+</html>

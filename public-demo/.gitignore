@@ -1,0 +1,13 @@
+# OS / editor noise
+.DS_Store
+Thumbs.db
+
+# Optional local exports
+*.zip
+*.mp4
+*.mov
+*.m4v
+
+# Temporary recording files
+recordings/
+exports/
